@@ -1,19 +1,52 @@
 .container {
-    padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #000;
+    height: 100vh;
+    padding-top: 60px;
+}
+
+
+.navbar {
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #111;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.logo {
+    
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 140px;
+    margin: 0;
 }
 
 .heading {
-    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
-.input {
-    padding: 10px;
+.search-bar {
+    padding: 8px 12px;
+    font-size: 1rem;
     width: 250px;
-    margin-bottom: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 5px #ffdd57;
 }
 
 .movie-list {

@@ -1,21 +1,17 @@
-import { useState } from 'react';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import './App.css';
+import MovieDetails from './components/MovieDetails';
 import MovieList from './components/MovieList';
 
 function App() {
-  const [movies, setmovies] = useState([]);
-
   return (
-    <>
-    <div>
-      < MovieList />
-    </div>
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>🎬 My Movie Database</h1>
-      <p>Welcome! Soon you'll see movie data fetched from an API here.</p>
-    </div>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<MovieList />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
