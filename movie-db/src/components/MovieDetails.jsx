@@ -2,56 +2,76 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function MovieDetails() {
-    const { id } = useParams();
-    const [movie, setMovie] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-    useEffect(() => {
-        fetchMovieDetails();
-    }, [id]);
+  useEffect(() => {
+    fetchMovieDetails();
+  }, [id]);
 
-    const fetchMovieDetails = async () => {
-    const apiKey = "4239d443";
-    const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`);
-    const data = await response.json();
-    setMovie(data);
-    setLoading(false);
-    };
+  const fetchMovieDetails = async () => {
+    try {
+      setLoading(true);
+      setError("");
+      const apiKey = "4239d443";
+      const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`);
+      const data = await response.json();
 
-    if (loading) return <p className="text-center text-white mt-20">Loading...</p>;
-    if (!movie) return <p className="text-center text-white mt-20">Movie not found</p>;
+      if (data.Response === "True") {
+        setMovie(data);
+      } else {
+        setError("Movie not found.");
+      }
+    } catch {
+      setError("Failed to load movie details. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-    <div className="min-h-screen bg-black text-white flex justify-center items-start py-10">
-        <div className="w-full max-w-5xl flex flex-col gap-6">
-            <Link to="/" className="text-yellow-400 hover:underline">← Back to Movie List</Link>
+  if (loading) return <p className="text-center text-gray-400 mt-20">Loading...</p>;
+  if (error) return <p className="text-center text-gray-400 mt-20">{error}</p>;
 
-            <div className="flex flex-col md:flex-row gap-8">
-                <img
-                    src={
-                    movie.Poster !== "N/A"
-                    ? movie.Poster
-                    : "https://via.placeholder.com/300x450?text=No+Image"
-                    }
-                    alt={movie.Title}
-                className="w-full md:w-1/3 rounded-lg"
-                />
+  return (
+    <div className="bg-gradient-to-b from-black via-gray-900 to-black min-h-screen text-white px-6 py-24">
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-4 bg-black/80 backdrop-blur-md shadow-lg z-50">
+        <h1 className="text-2xl font-extrabold text-red-500 tracking-wider">
+          Cine<span className="text-white">Hub</span>
+        </h1>
+        <Link to="/" className="text-gray-300 hover:text-red-400 transition">
+          Home
+        </Link>
+      </nav>
 
-                <div className="flex-1">
-                    <h2 className="text-3xl font-bold mb-2">
-                        {movie.Title} <span className="text-gray-400">({movie.Year})</span>
-                    </h2>
+      <div className="pt-16 max-w-6xl mx-auto flex flex-col md:flex-row gap-10">
+        <img
+          src={
+            movie.Poster !== "N/A"
+              ? movie.Poster
+              : "https://via.placeholder.com/300x450?text=No+Image"
+          }
+          alt={movie.Title}
+          className="w-full md:w-1/3 rounded-lg shadow-xl object-cover"
+        />
 
-                    <p><span className="font-semibold text-gray-300">Genre:</span> {movie.Genre}</p>
-                    <p><span className="font-semibold text-gray-300">Plot:</span> {movie.Plot}</p>
-                    <p><span className="font-semibold text-gray-300">Cast:</span> {movie.Actors}</p>
-                    <p><span className="font-semibold text-gray-300">Director:</span> {movie.Director}</p>
-                    <p><span className="font-semibold text-gray-300">IMDB Rating:</span> ⭐ {movie.imdbRating}</p>
-                </div>
-            </div>
+        <div className="flex-1 space-y-3">
+          <h2 className="text-4xl font-extrabold text-red-500">{movie.Title}</h2>
+          <p className="text-gray-400 text-lg">({movie.Year})</p>
+
+          <div className="mt-4 space-y-2">
+            <p><span className="font-semibold text-gray-200">Genre:</span> {movie.Genre}</p>
+            <p><span className="font-semibold text-gray-200">Plot:</span> {movie.Plot}</p>
+            <p><span className="font-semibold text-gray-200">Cast:</span> {movie.Actors}</p>
+            <p><span className="font-semibold text-gray-200">Director:</span> {movie.Director}</p>
+            <p><span className="font-semibold text-gray-200">IMDB Rating:</span> ⭐ {movie.imdbRating}</p>
+          </div>
         </div>
+      </div>
     </div>
-    );
+  );
 }
 
 export default MovieDetails;
