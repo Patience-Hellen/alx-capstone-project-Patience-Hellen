@@ -33,7 +33,7 @@ function HomePage() {
   };
 
   const handleSearch = (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
     if (searchTerm.trim() !== "") {
       navigate(`/movies?search=${encodeURIComponent(searchTerm)}`);
   }
@@ -42,13 +42,11 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      {/* Navbar */}
       <nav className="navbar">
         <h1 className="logo">
           Cine<span>Hub</span>
         </h1>
         <div className="nav-links">
-          {/* Search Bar */}
           <form className="search-form" onSubmit={handleSearch}>
           <input
             type="text"
@@ -62,7 +60,6 @@ function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="hero">
         <div className="overlay"></div>
         <div className="hero-content">
@@ -76,7 +73,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Recommended Section */}
       <section className="recommended">
         <h3>Recommended: Marvel Picks</h3>
 
