@@ -1,6 +1,6 @@
 # Movie Database Application
 
-This is a Movie Database application built with React, Tailwind CSS, and the OMDB API.  
+This is a Movie Database application built with React, CSS, and the OMDB API.  
 The application allows users to search for movies, view details, and explore movie information through a responsive and user-friendly interface.
 
 ## Features
@@ -15,12 +15,32 @@ The application allows users to search for movies, view details, and explore mov
 ## Tech Stack
 
 - React (Vite)
-- Tailwind CSS
+- CSS
 - React Router
 - OMDB API
 - React Hooks (useState, useEffect)
 - Deployment with Netlify or Vercel
 
+## Screens
+- Home Page — Features a navigation bar, hero section, and Marvel recommendations.
+- Movie List Page — Displays search results.
+- Movie Details Page — Shows more info about a selected movie.
+- Error / Loading Screens — Styled for a consistent, cinematic feel.
 
+## Installation and Setup
+- Clone the repository: git clone
+- Navigate into the folder: cd
+- Install dependencies: npm install
+- Run the app: npm start
+- Open in browser: http://localhost:3000
+
+## Known Issues
+
+- Some movie posters may not load if unavailable from the API.
+- Safari browsers do not support certain CSS effects like backdrop-filter.
+
+## Author
+Patience Hellen
+- Built as part of the ALX Frontend Project.
 
 
