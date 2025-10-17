@@ -6,7 +6,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -46,6 +45,7 @@
 
 .back-link-container {
   padding: 100px 32px 0 32px;
+
 }
 
 .back-link {
@@ -54,14 +54,13 @@
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s;
+  font-size: 20px;
 }
 
 .back-link:hover {
   color: white;
 }
 
-
-/* Movie Details Layout */
 .details-container {
   display: flex;
   flex-direction: column;

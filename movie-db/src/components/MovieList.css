@@ -84,12 +84,11 @@
   scroll-behavior: smooth;
 }
 
-/* Hide scrollbar but keep scrolling */
 .movies-container::-webkit-scrollbar {
   display: none;
 }
 .movies-container {
-  -ms-overflow-style: none; /* IE and Edge */
+  -ms-overflow-style: none;
 }
 
 .movie-card {
@@ -114,15 +113,39 @@
   object-fit: cover;
 }
 
+.error-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  background-color: transparent;
+  color: #ccc;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 9999;
+}
+
 .movie-title {
   padding: 8px;
   font-weight: bold;
   font-size: 16px;
 }
 
-.loading,
-.error {
-  margin-top: 16px;
-  font-size: 16px;
-  color: #aaa;
-}

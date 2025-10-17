@@ -37,7 +37,6 @@ function MovieDetails() {
 
   return (
     <div className="details-page">
-      {/* Navbar */}
       <nav className="navbar">
         <h1 className="logo">
           Cine<span>Hub</span>
@@ -47,12 +46,10 @@ function MovieDetails() {
         </div>
       </nav>
 
-      {/* Back Link */}
       <div className="back-link-container">
         <Link to="/movies" className="back-link">← Back to Movies</Link>
       </div>
 
-      {/* Main Content */}
       <div className="details-container">
         <img
           src={

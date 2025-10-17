@@ -78,7 +78,6 @@ function MovieList() {
 
   return (
     <div className="movie-list-page">
-      {/* Navbar */}
       <header className="navbar">
         <h1 className="logo">
           Cine<span>Hub</span>
@@ -97,11 +96,10 @@ function MovieList() {
         </nav>
       </header>
 
-      {/* Movie Section */}
       <main className="movie-section">
         <h2>{search ? "Search Results" : "Trending Movies"}</h2>
         {loading && <p className="loading">Loading...</p>}
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error-screen">{error}</p>}
 
         <div className="movies-container">
           {movies.map((movie) => (
